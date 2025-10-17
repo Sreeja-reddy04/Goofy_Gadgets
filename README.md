@@ -2,9 +2,16 @@
 
 # HDL Bits Solutions
 ## Problem sets
-- Getting Started
-- Verilog Language
-- Circuits
+### - Getting Started
+### - Verilog Language
+   - Basics
+   - Vectors
+   - Modules:Hierarchy
+   - Procedures
+   - More Verilog Features
+### - Circuits
+   - Combinational
+   - Sequential 
 ## [Getting Started]
 ```bash
 module top_module(output one);
