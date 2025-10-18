@@ -108,5 +108,58 @@ endmodule
 ```
 ## [Vectors]
 ```bash
-
+module top_module ( 
+    input wire [2:0] vec,
+    output wire [2:0] outv,
+    output wire o2,
+    output wire o1,
+    output wire o0  );
+    assign outv=vec[2:0];
+    assign o2=vec[2];
+    assign o1=vec[1];
+    assign o0=vec[0];
+endmodule
+```
+## Vector 1
+```bash
+`default_nettype none    
+module top_module( 
+    input wire [15:0] in,
+    output wire [7:0] out_hi,
+    output wire [7:0] out_lo );
+    assign out_lo=in[7:0];
+    assign out_hi=in[15:8];
+endmodule
+```
+## Vector 2
+```bash
+module top_module( 
+    input [31:0] in,
+    output [31:0] out );//
+    assign out[31:24]=in[7:0];
+    assign out[23:16]=in[15:8];
+    assign out[15:8]=in[23:16];
+    assign out[7:0]=in[31:24];
+endmodule
+```
+## 4 input gate
+```bash
+module top_module( 
+    input [3:0] in,
+    output out_and,
+    output out_or,
+    output out_xor
+);
+    assign out_and=in[3]&in[2]&in[1]&in[0];
+    assign out_or=in[3]|in[2]|in[1]|in[0];
+    assign out_xor=in[3]^in[2]^in[1]^in[0];
+endmodule
+```
+## Vector 3 [Concatination]
+```bash
+module top_module (
+    input [4:0] a, b, c, d, e, f,
+    output [7:0] w, x, y, z );//
+    assign {w[7:0],x[7:0],y[7:0],z[7:0]}={a[4:0],b[4:0],c[4:0],d[4:0],e[4:0],f[4:0],2'b11};
+endmodule
 ```
