@@ -120,7 +120,7 @@ module top_module (
     assign o0=vec[0];
 endmodule
 ```
-## Vector 1
+## [Vector 1]
 ```bash
 `default_nettype none    
 module top_module( 
@@ -131,7 +131,7 @@ module top_module(
     assign out_hi=in[15:8];
 endmodule
 ```
-## Vector 2
+## [Vector 2]
 ```bash
 module top_module( 
     input [31:0] in,
@@ -142,7 +142,7 @@ module top_module(
     assign out[7:0]=in[31:24];
 endmodule
 ```
-## 4 input gate
+## [4 input gate]
 ```bash
 module top_module( 
     input [3:0] in,
@@ -155,7 +155,7 @@ module top_module(
     assign out_xor=in[3]^in[2]^in[1]^in[0];
 endmodule
 ```
-## Vector 3 [Concatination]
+## [Vector 3 -Concatination]
 ```bash
 module top_module (
     input [4:0] a, b, c, d, e, f,
