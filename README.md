@@ -155,7 +155,7 @@ module top_module(
     assign out_xor=in[3]^in[2]^in[1]^in[0];
 endmodule
 ```
-## [Vector 3 -Concatination]
+## [Vector 3 - Concatination]
 ```bash
 module top_module (
     input [4:0] a, b, c, d, e, f,
@@ -169,5 +169,33 @@ module top_module(
     input [7:0] in,
     output [7:0] out);
     assign out[7:0]={in[0], in[1], in[2], in[3], in[4], in[5], in[6], in[7]};
+endmodule
+```
+## [Vector 4 -Replication]
+```bash
+module top_module (
+    input [7:0] in,
+    output [31:0] out );
+    assign out={{24{in[7]}},in};
+endmodule
+```
+## [Vector 5]
+### Method 1
+```bash
+module top_module (
+    input a, b, c, d, e,
+    output [24:0] out );
+    assign out=~{{5{a}},{5{b}},{5{c}},{5{d}},{5{e}}}^{5{a,b,c,d,e}};  
+endmodule
+```
+### Method 2
+```bash
+module top_module (
+    input a, b, c, d, e,
+    output [24:0] out );
+    
+    wire [24:0] top = { {5{a}}, {5{b}}, {5{c}}, {5{d}}, {5{e}} };
+    wire [24:0] bottom = {5{ {a, b, c, d, e} }};
+    assign out = top ~^ bottom;
 endmodule
 ```
