@@ -2,14 +2,14 @@
 
 # HDL Bits Solutions
 ## Problem sets
-### - Getting Started
-### - Verilog Language
+#### - Getting Started
+#### - Verilog Language
    - Basics
    - Vectors
    - Modules:Hierarchy
    - Procedures
    - More Verilog Features
-### - Circuits
+#### - Circuits
    - Combinational
    - Sequential 
 ## [Getting Started]
