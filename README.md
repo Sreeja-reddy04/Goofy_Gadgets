@@ -248,7 +248,7 @@ my_dff m2(.clk(clk),.d(q1),.q(q2));
 my_dff m3(.clk(clk),.d(q2),.q(q));
 endmodule
 ```
-## [ports and vectors]
+## [Modules and vectors]
 ```bash
 module top_module ( 
     input clk, 
