@@ -201,8 +201,41 @@ endmodule
 ```
 # Module
 ## [Vector 5]
+### Method 1
 ```bash
 module top_module ( input a, input b, output out );
 mod_a m1(a,b,out);
+endmodule
+```
+### Method 2
+```bash
+module top_module ( input a, input b, output out );
+mod_a m1(.in1(a),.in2(b),.out(out));
+endmodule
+```
+## Connecting ports by position 
+```bash
+module top_module ( 
+    input a, 
+    input b, 
+    input c,
+    input d,
+    output out1,
+    output out2
+);
+mod_a m1(out1,out2,a,b,c,d);
+endmodule
+```
+## Connecting ports by port name
+```bash
+module top_module ( 
+    input a, 
+    input b, 
+    input c,
+    input d,
+    output out1,
+    output out2
+);
+mod_a m(.in1(a),.in2(b),.in3(c),.in4(d),.out1(out1),.out2(out2));
 endmodule
 ```
