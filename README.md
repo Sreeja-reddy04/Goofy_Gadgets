@@ -199,3 +199,10 @@ module top_module (
     assign out = top ~^ bottom;
 endmodule
 ```
+# Module
+## [Vector 5]
+```bash
+module top_module ( input a, input b, output out );
+mod_a m1(a,b,out);
+endmodule
+```
