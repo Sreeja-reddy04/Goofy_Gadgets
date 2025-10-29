@@ -213,7 +213,7 @@ module top_module ( input a, input b, output out );
 mod_a m1(.in1(a),.in2(b),.out(out));
 endmodule
 ```
-## Connecting ports by position 
+## [Connecting ports by position] 
 ```bash
 module top_module ( 
     input a, 
@@ -226,7 +226,7 @@ module top_module (
 mod_a m1(out1,out2,a,b,c,d);
 endmodule
 ```
-## Connecting ports by port name
+## [Connecting ports by name]
 ```bash
 module top_module ( 
     input a, 
@@ -239,7 +239,7 @@ module top_module (
 mod_a m(.in1(a),.in2(b),.in3(c),.in4(d),.out1(out1),.out2(out2));
 endmodule
 ```
-## Three ports
+## [Three ports]
 ```bash
 module top_module ( input clk, input d, output q );
 wire q1,q2;
