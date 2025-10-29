@@ -239,3 +239,12 @@ module top_module (
 mod_a m(.in1(a),.in2(b),.in3(c),.in4(d),.out1(out1),.out2(out2));
 endmodule
 ```
+## Three ports
+```bash
+module top_module ( input clk, input d, output q );
+wire q1,q2;
+my_dff m1(.clk(clk),.d(d),.q(q1));
+my_dff m2(.clk(clk),.d(q1),.q(q2));
+my_dff m3(.clk(clk),.d(q2),.q(q));
+endmodule
+```
