@@ -301,3 +301,37 @@ assign sum=a^b^cin;
 assign cout=a&b | b&cin | cin&a;
 endmodule
 ```
+## [Carry select adder]
+```bash
+module top_module(
+    input [31:0] a,
+    input [31:0] b,
+    output [31:0] sum
+);
+wire w1,w2,w3;
+    reg [15:0]sum1,sum2;
+    add16 a1(a[15:0],b[15:0],1'b0,sum[15:0],w1);
+    add16 a2(a[31:16],b[31:16],1'b0,sum1[15:0],w2);
+    add16 a3(a[31:16],b[31:16],1'b1,sum2[15:0],w3);  
+    always@(*)
+        case(w1)
+            0:sum[31:16]=sum1[15:0];
+            1:sum[31:16]=sum2[15:0];
+        endcase
+endmodule
+```
+## [sub_addr]
+```bash
+module top_module(
+    input [31:0] a,
+    input [31:0] b,
+    input sub,
+    output [31:0] sum
+);
+    wire w1,w2;
+    wire [31:0]w;
+      assign w = b ^ {32{sub}};  
+    add16 a1(a[15:0],w[15:0],sub,sum[15:0],w1);
+    add16 a2(a[31:16],w[31:16],w1,sum[31:16],w2);
+endmodule
+```
