@@ -239,7 +239,7 @@ module top_module (
 mod_a m(.in1(a),.in2(b),.in3(c),.in4(d),.out1(out1),.out2(out2));
 endmodule
 ```
-## [Three ports]
+## Module shift [Three modules]
 ```bash
 module top_module ( input clk, input d, output q );
 wire q1,q2;
@@ -248,7 +248,7 @@ my_dff m2(.clk(clk),.d(q1),.q(q2));
 my_dff m3(.clk(clk),.d(q2),.q(q));
 endmodule
 ```
-## [Modules and vectors]
+## Module shift8 [Modules and vectors]
 ```bash
 module top_module ( 
     input clk, 
@@ -271,7 +271,7 @@ always @(*)
      end
 endmodule
 ```
-## [Module add 1]
+## Module add [Adder-1]
 ```bash
 module top_module(
     input [31:0] a,
@@ -284,7 +284,7 @@ add16 inst2(.a(a[31:16]),.b(b[31:16]),.cin(c1),.sum(sum[31:16]),.cout(c2));
    
 endmodule
 ```
-## [Module add 2]
+## Module fadd [Adder-2]
 ```bash
 module top_module (
     input [31:0] a,
@@ -301,7 +301,7 @@ assign sum=a^b^cin;
 assign cout=a&b | b&cin | cin&a;
 endmodule
 ```
-## [Carry select adder]
+## Module cseladd [Carry-select adder]
 ```bash
 module top_module(
     input [31:0] a,
@@ -320,7 +320,7 @@ wire w1,w2,w3;
         endcase
 endmodule
 ```
-## [sub_addr]
+## Module addsub [Adder-subtractor]
 ```bash
 module top_module(
     input [31:0] a,
@@ -334,4 +334,60 @@ module top_module(
     add16 a1(a[15:0],w[15:0],sub,sum[15:0],w1);
     add16 a2(a[31:16],w[31:16],w1,sum[31:16],w2);
 endmodule
+```
+## [alwaysblock1]
+```bash
+module top_module(
+    input a, 
+    input b,
+    output wire out_assign,
+    output reg out_alwaysblock
+);
+assign out_assign=a&b;
+    always@(*)
+        out_alwaysblock=a&b;
+endmodule
+```
+## [alwaysblock2]
+```bash
+module top_module(
+    input clk,
+    input a,
+    input b,
+    output wire out_assign,
+    output reg out_always_comb,
+    output reg out_always_ff   );
+assign out_assign=a^b;
+    always @(*)
+        out_always_comb=a^b;
+    always@(posedge clk)
+        out_always_ff<=a^b;
+endmodule
+```
+## [always if]
+```bash
+module top_module(
+    input a,
+    input b,
+    input sel_b1,
+    input sel_b2,
+    output wire out_assign,
+    output reg out_always   ); 
+    always@(*)
+        begin
+            if(sel_b1&&sel_b2)
+            begin
+            out_always=b;
+            end
+        else
+            begin
+            out_always=a;
+            end
+        end    
+    assign out_assign=sel_b2?(sel_b1?b:a):a;      
+endmodule
+```
+## [always if2]
+```bash
+
 ```
