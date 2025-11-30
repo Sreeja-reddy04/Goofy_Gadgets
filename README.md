@@ -476,3 +476,88 @@ module top_module (
         end   
 endmodule
 ```
+## [Always nolatches]
+```bash
+module top_module (
+    input [15:0] scancode,
+    output reg left,
+    output reg down,
+    output reg right,
+    output reg up); 
+    always@(*)
+        begin
+         up = 0; down = 0; left = 0; right = 0;
+        case(scancode)
+         16'he06b  : left=1 ;
+         16'he072  : down=1;
+         16'he074  : right=1;
+         16'he075  : up=1;
+         endcase
+         end  
+endmodule
+```
+## [conditional- ternary operator]
+```bash
+module top_module (
+    input [7:0] a, b, c, d,
+    output [7:0] min);
+    wire[7:0]r1,r2;
+    assign r1 = (a<b)?a: b;
+    assign r2 = (c<d)?c: d;
+    assign min = (r1<r2)?r1: r2;
+endmodule
+```
+## [Reduction operator]
+```bash
+module top_module (
+    input [7:0] in,
+    output parity); 
+    assign parity=in[0]^in[1]^in[2]^in[3]^in[4]^in[5]^in[6]^in[7];
+endmodule
+```
+## [Reduction- Gate_100]
+```bash
+module top_module( 
+    input [99:0] in,
+    output out_and,
+    output out_or,
+    output out_xor 
+);
+assign out_and= &in;
+assign out_or= |in;
+assign out_xor= ^in;
+endmodule
+```
+## [Vector100r]
+### Method 1
+```bash
+module top_module( 
+    input [99:0] in,
+    output [99:0] out
+);
+    integer i;
+    always@(*)
+        begin
+      for(i=0;i<=99;i=i+1)
+           begin
+               out[i]=in[99-i];
+           end
+        end
+endmodule
+```
+### Method 2
+```bash
+module top_module( 
+    input [99:0] in,
+    output [99:0] out
+);
+    integer i;
+    always@(*)
+        begin
+            for(i=99;i>=0;i=i-1)
+           begin
+               out[99-i]=in[i];
+           end
+        end
+endmodule
+```
