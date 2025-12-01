@@ -561,3 +561,19 @@ module top_module(
         end
 endmodule
 ```
+## [Popcount255]
+```bash
+module top_module( 
+    input [254:0] in,
+    output [7:0] out );
+    integer i;
+    always@(*)
+         begin
+            out=0;
+             for(i=0;i<=254;i=i+1)
+        if(in[i]==1)
+        out=out+1;
+             else;
+         end
+endmodule
+```
